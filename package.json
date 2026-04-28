@@ -1,0 +1,41 @@
+{
+  "name": "bot-cli",
+  "version": "1.0.0",
+  "description": "一个交互式终端搜索工具，基于 DuckDuckGo 搜索引擎",
+  "main": "dist/index.js",
+  "bin": {
+    "bot-cli": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "cli",
+    "search",
+    "bot"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenjiaobin/bot-cli.git"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "clipboardy": "^5.3.1",
+    "commander": "^14.0.3",
+    "ink": "^7.0.1",
+    "open": "^11.0.0",
+    "react": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
