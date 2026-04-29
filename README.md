@@ -12,13 +12,31 @@
 
 ## 安装
 
+### 全局安装（推荐）
+
 ```bash
+npm install -g search-bot-cli
+```
+
+安装完成后，可以在任意目录使用 `bot-cli` 命令。
+
+### 本地开发
+
+```bash
+git clone https://github.com/chenjiaobin/bot-cli.git
+cd bot-cli
 npm install
 ```
 
 ## 使用方式
 
-### 基础搜索
+### 全局安装后
+
+```bash
+bot-cli search "关键词"
+```
+
+### 本地开发模式
 
 ```bash
 npm run dev -- search "关键词"

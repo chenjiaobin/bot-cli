@@ -17,3 +17,6 @@ Thumbs.db
 # IDE 配置
 .vscode/
 .idea/
+
+# npm token 配置（不要提交）
+.npmrc
