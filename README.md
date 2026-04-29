@@ -9,6 +9,7 @@
 - **保存结果** — 支持导出 TXT 或 JSON 格式
 - **AI 摘要** — 可选 AI 生成搜索结果摘要
 - **终端美化** — 使用 React + Ink 构建美观的 CLI 输出
+- **非交互输出** — `--output json` / `--output plain` 仅向标准输出打印结果并退出，便于脚本、CI 或 AI Agent 调用
 
 ## 安装
 
@@ -48,6 +49,30 @@ npm run dev -- search "关键词"
 npm run build
 node dist/index.js search "关键词"
 ```
+
+### 非交互输出（`--output`）
+
+默认使用 Ink 交互界面。若只需打印搜索结果后立刻退出（无 TUI、适合管道或自动化），使用 `-o` / `--output`：
+
+| 取值 | 说明 |
+|------|------|
+| `interactive` | 默认，进入交互式终端界面 |
+| `json` | 向 stdout 输出 JSON（缩进 2 空格），结构见下表 |
+| `plain` | 向 stdout 输出纯文本编号列表（标题、链接、摘要） |
+
+```bash
+bot-cli search "TypeScript" --output json
+bot-cli search "关键词" -o plain
+npm run dev -- search "测试" --output json
+node dist/index.js search "nodejs" -o json
+```
+
+**JSON 字段说明**
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `keyword` | string | 本次搜索关键词 |
+| `results` | array | 结果列表，每项含 `title`、`link`、`snippet` |
 
 ## 交互命令
 
@@ -176,7 +201,7 @@ Bot-Cli/
 
 ## 注意事项
 
-1. **交互模式** 需要在真实终端中运行，不支持管道或重定向
+1. **默认交互模式**（`--output interactive` 或未指定）需要在真实终端中运行，不适合无 TTY 或管道场景；使用 `--output json` 或 `--output plain` 时只打印结果并退出，可用于脚本、重定向与管道
 2. **打开链接** 功能需要系统有默认浏览器
 3. **剪贴板** 功能在部分 Linux 系统可能需要额外依赖（如 `xclip`）
 
